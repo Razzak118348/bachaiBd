@@ -5,7 +5,6 @@ import Autoplay from "embla-carousel-autoplay";
 import { motion } from "framer-motion";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
-// Images should be inside public/banner/
 const SLIDES = [
   { id: 1, src: "/banner/01.png", alt: "Bachai BD banner 1" },
   { id: 2, src: "/banner/02.png", alt: "Bachai BD banner 2" },
@@ -13,7 +12,7 @@ const SLIDES = [
   { id: 4, src: "/banner/04.jpg", alt: "Bachai BD banner 4" },
   { id: 5, src: "/banner/05.jpg", alt: "Bachai BD banner 5" },
   { id: 6, src: "/banner/06.jpg", alt: "Bachai BD banner 6" },
-  { id: 7, src: "/banner/07.jpg", alt: "Bachai BD banner 7" },
+  { id: 7, src: "/banner/07.png", alt: "Bachai BD banner 7" },
 ];
 
 export default function Banner() {
@@ -74,11 +73,11 @@ export default function Banner() {
       aria-label="Bachai BD promotional banners"
       className="
         relative w-full overflow-hidden
-        bg-gray-100
+        bg-white md:bg-gray-100
         h-[clamp(300px,32vw,520px)]
       "
     >
-      {/* ================= CAROUSEL ================= */}
+      {/* CAROUSEL */}
 
       <div
         ref={emblaRef}
@@ -93,17 +92,18 @@ export default function Banner() {
                 relative h-full min-w-0
                 flex-[0_0_100%]
                 overflow-hidden
-                bg-gray-100
+                bg-white md:bg-gray-100
               "
             >
-              {/* BLURRED BACKGROUND
-                  Fills empty spaces around the original image */}
+
+              {/* BLURRED BACKGROUND - DESKTOP ONLY */}
 
               <img
                 src={slide.src}
                 alt=""
                 aria-hidden="true"
                 className="
+                  hidden md:block
                   absolute inset-0
                   h-full w-full
                   object-cover
@@ -119,12 +119,13 @@ export default function Banner() {
               <div
                 className="
                   absolute inset-0
-                  bg-black/10
+                  bg-white
+                  md:bg-black/10
+                  h-1/2 md:h-full
                 "
               />
 
-              {/* ORIGINAL IMAGE
-                  object-contain ensures no cropping */}
+              {/* ORIGINAL BANNER IMAGE */}
 
               <motion.img
                 src={slide.src}
@@ -150,7 +151,8 @@ export default function Banner() {
                 }}
                 className="
                   absolute inset-0 z-10
-                  h-full w-full
+                  h-1/2 md:h-full
+                  w-full
                   object-contain
                   object-center
                   select-none
@@ -163,12 +165,14 @@ export default function Banner() {
         </div>
       </div>
 
-      {/* ================= PROGRESS BAR ================= */}
+      {/* PROGRESS BAR */}
 
-      <div className="
-        absolute left-0 right-0 top-0
-        z-30 h-[3px] bg-white/20
-      ">
+      <div
+        className="
+          absolute left-0 right-0 top-0
+          z-30 h-[3px] bg-white/20
+        "
+      >
         <motion.div
           key={selected}
           initial={{ width: 0 }}
@@ -180,7 +184,7 @@ export default function Banner() {
         />
       </div>
 
-      {/* ================= PREVIOUS BUTTON ================= */}
+      {/* PREVIOUS BUTTON */}
 
       <motion.button
         type="button"
@@ -189,21 +193,22 @@ export default function Banner() {
         whileTap={{ scale: 0.9 }}
         aria-label="Previous banner"
         className="
+          hidden md:flex
           absolute left-3 top-1/2 z-30
           -translate-y-1/2
-          flex h-10 w-10 items-center justify-center
+          h-10 w-10 items-center justify-center
           rounded-full
           border border-white/40
           bg-white/70 text-gray-800
           shadow-md backdrop-blur-md
           transition hover:bg-white
-          sm:left-6 sm:h-12 sm:w-12
+          lg:left-6 lg:h-12 lg:w-12
         "
       >
         <FiChevronLeft size={25} />
       </motion.button>
 
-      {/* ================= NEXT BUTTON ================= */}
+      {/* NEXT BUTTON */}
 
       <motion.button
         type="button"
@@ -212,28 +217,33 @@ export default function Banner() {
         whileTap={{ scale: 0.9 }}
         aria-label="Next banner"
         className="
+          hidden md:flex
           absolute right-3 top-1/2 z-30
           -translate-y-1/2
-          flex h-10 w-10 items-center justify-center
+          h-10 w-10 items-center justify-center
           rounded-full
           border border-white/40
           bg-white/70 text-gray-800
           shadow-md backdrop-blur-md
           transition hover:bg-white
-          sm:right-6 sm:h-12 sm:w-12
+          lg:right-6 lg:h-12 lg:w-12
         "
       >
         <FiChevronRight size={25} />
       </motion.button>
 
-      {/* ================= DOT INDICATORS ================= */}
+      {/* DOT INDICATORS */}
 
-      <div className="
-        absolute bottom-4 left-1/2 z-30
-        flex -translate-x-1/2 items-center gap-2
-        rounded-full bg-black/25
-        px-3 py-2 backdrop-blur-md
-      ">
+      <div
+        className="
+          hidden md:flex
+          absolute bottom-4 left-1/2 z-30
+          -translate-x-1/2
+          items-center gap-2
+          rounded-full bg-black/25
+          px-3 py-2 backdrop-blur-md
+        "
+      >
         {SLIDES.map((slide, index) => (
           <motion.button
             key={slide.id}
