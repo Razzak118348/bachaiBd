@@ -356,7 +356,7 @@ const Navbar = ({
             shadow-xl border border-gray-100
             overflow-hidden"
         >
-          <div className="px-4 py-3 bg-[#F8FAF8] border-b">
+          {/* <div className="px-4 py-3 bg-[#F8FAF8] border-b">
             <Link
               to={getCategoryPath(item.category)}
               className="flex items-center justify-between
@@ -367,7 +367,7 @@ const Navbar = ({
 
               <FiChevronRight size={16} />
             </Link>
-          </div>
+          </div> */}
 
           <div className="py-2 max-h-[350px] overflow-y-auto">
             {item.subCategories.map((sub) => (
@@ -381,10 +381,10 @@ const Navbar = ({
               >
                 {sub.name}
 
-                <FiChevronRight
+                {/* <FiChevronRight
                   size={14}
                   className="opacity-0 group-hover:opacity-100"
-                />
+                /> */}
               </Link>
             ))}
           </div>
@@ -440,7 +440,7 @@ const Navbar = ({
                   >
                     <FiUser size={23} />
                     <span className="text-xs font-medium">
-                      Sign In
+                     Login
                     </span>
                   </Link>
                 )}
@@ -700,7 +700,7 @@ const Navbar = ({
                       className="text-sm bg-[#F58220]
                         px-3 py-2 rounded-lg"
                     >
-                      Sign In
+                      Login
                     </Link>
                   )}
                 </div>
@@ -746,12 +746,12 @@ const Navbar = ({
               {/* Categories Accordion */}
 
               <div className="p-4">
-                <p
+                {/* <p
                   className="text-xs font-bold uppercase
                     tracking-wider text-gray-400 mb-3"
                 >
                   Shop by Category
-                </p>
+                </p> */}
 
                 <div className="divide-y divide-gray-100">
                   {navItems.map((item) => {
@@ -826,7 +826,7 @@ const Navbar = ({
                                   >
                                     {sub.name}
 
-                                    <FiChevronRight size={14} />
+                                    {/* <FiChevronRight size={14} /> */}
                                   </Link>
                                 ))}
                               </div>
